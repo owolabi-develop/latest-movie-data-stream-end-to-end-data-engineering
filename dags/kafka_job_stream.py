@@ -42,5 +42,5 @@ def stream_to_kafka(topic,movies):
         if movieindex == movielength:
             break
            
-moviese = get_trending_movies()     
-stream_to_kafka("latest_movie",moviese)
+# moviese = get_trending_movies()     
+# stream_to_kafka("latest_movie",moviese)2q
