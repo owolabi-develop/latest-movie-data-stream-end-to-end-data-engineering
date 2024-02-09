@@ -6,7 +6,7 @@ from load_movie_data import  get_video_url
 from kafka_job_stream import stream_to_kafka
 from airflow.operators.python import PythonOperator
 from airflow.decorators import dag, task
-from spark_job_stream import stream_from_spark
+from spark_job_stream import read_stream_from_kafka_write_to_dynamodb
 
 
 @dag(
@@ -57,8 +57,8 @@ def process_movie():
     )
     
     stream_data_from_spark = PythonOperator(
-        task_id="stream_from_spark",
-        python_callable=stream_from_spark
+        task_id="stream_from_kafka_write_to_dynamodb",
+        python_callable=read_stream_from_kafka_write_to_dynamodb
     )
     
     movie_data >> stream_data_to_kafka >> stream_data_from_spark
