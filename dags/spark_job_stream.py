@@ -12,7 +12,7 @@ def read_stream_from_kafka_write_to_dynamodb():
     spark_con = SparkSession \
             .builder \
             .appName("StructuredNetworkWordCount") \
-            .config("spark-jars-packages","org.apache.spark:spark-sql-kafka-0-10_2.13:jar:3.5.0")\
+            .config("spark.jars.packages","org.apache.spark:spark-sql-kafka-0-10_2.13:jar:3.5.0")\
             .getOrCreate()
             
     spark_con.sparkContext.setLogLevel('ERROR')
